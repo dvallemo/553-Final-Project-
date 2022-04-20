@@ -1,102 +1,102 @@
 
-
 #include <iostream>
 using namespace std;
 
 
 void print(int *point_left, int *point_mid, int *point_right, int n){
         for(int j=0; j < n; j++){
-            for(int i=0; i < n - *(point_left +j); i++){
+            for(int i=0; i < 2*n - 2*(*(point_left +j)); i++){
                 cout<<" ";
             }
-            for(int i=0; i < *(point_left +j); i++){
-                cout<<"*";
+            for(int i=0; i < 2*(*(point_left +j)); i++){
+                cout<<"H";
             }
             cout<<"||";
-            for(int i=0; i < *(point_left +j); i++){
-                cout<<"*";
+            for(int i=0; i < 2*(*(point_left +j)); i++){
+                cout<<"H";
             }
-            for(int i=0; i < n - *(point_left +j); i++){
+            for(int i=0; i < 2*n - 2*(*(point_left +j)); i++){
                 cout<<" ";
             }
             //left layer printed
-            for(int i=0; i < n - *(point_mid +j); i++){
+            for(int i=0; i < 2*n - 2*(*(point_mid +j)); i++){
                 cout<<" ";
             }
-            for(int i=0; i < *(point_mid +j); i++){
-                cout<<"*";
+            for(int i=0; i < 2*(*(point_mid +j)); i++){
+                cout<<"H";
             }
             
             cout<<"||";
             
-            for(int i=0; i < *(point_mid +j); i++){
-                cout<<"*";
+            for(int i=0; i < 2*(*(point_mid +j)); i++){
+                cout<<"H";
             }
-            for(int i=0; i < n - *(point_mid +j); i++){
+            for(int i=0; i < 2*n - 2*(*(point_mid +j)); i++){
                 cout<<" ";
             }
             //middle layer printed
-            for(int i=0; i < n - *(point_right +j); i++){
+            for(int i=0; i < 2*n - 2*(*(point_right +j)); i++){
                 cout<<" ";
             }
-            for(int i=0; i < *(point_right +j); i++){
-                cout<<"*";
+            for(int i=0; i < 2*(*(point_right +j)); i++){
+                cout<<"H";
             }
             cout<<"||";
-            for(int i=0; i < *(point_right +j); i++){
-                cout<<"*";
+            for(int i=0; i < 2*(*(point_right +j)); i++){
+                cout<<"H";
             }
-            for(int i=0; i < n - *(point_right +j); i++){
+            for(int i=0; i < 2*n - 2*(*(point_right +j)); i++){
                 cout<<" ";
             }
             cout<<endl;
             ////////////////////////////////////////////
-            for(int i=0; i < n - *(point_left +j); i++){
+            for(int i=0; i < 2*n - 2*(*(point_left +j)); i++){
                 cout<<" ";
             }
-            for(int i=0; i < *(point_left +j); i++){
-                cout<<"*";
+            for(int i=0; i < 2*(*(point_left +j)); i++){
+                cout<<"H";
             }
             cout<<"||";
-            for(int i=0; i < *(point_left +j); i++){
-                cout<<"*";
+            for(int i=0; i < 2*(*(point_left +j)); i++){
+                cout<<"H";
             }
-            for(int i=0; i < n - *(point_left +j); i++){
+            for(int i=0; i < 2*n - 2*(*(point_left +j)); i++){
                 cout<<" ";
             }
             //left layer printed
-            for(int i=0; i < n - *(point_mid +j); i++){
+            for(int i=0; i < 2*n - 2*(*(point_mid +j)); i++){
                 cout<<" ";
             }
-            for(int i=0; i < *(point_mid +j); i++){
-                cout<<"*";
+            for(int i=0; i < 2*(*(point_mid +j)); i++){
+                cout<<"H";
             }
             
             cout<<"||";
             
-            for(int i=0; i < *(point_mid +j); i++){
-                cout<<"*";
+            for(int i=0; i < 2*(*(point_mid +j)); i++){
+                cout<<"H";
             }
-            for(int i=0; i < n - *(point_mid +j); i++){
+            for(int i=0; i < 2*n - 2*(*(point_mid +j)); i++){
                 cout<<" ";
             }
             //middle layer printed
-            for(int i=0; i < n - *(point_right +j); i++){
+            for(int i=0; i < 2*n - 2*(*(point_right +j)); i++){
                 cout<<" ";
             }
-            for(int i=0; i < *(point_right +j); i++){
-                cout<<"*";
+            for(int i=0; i < 2*(*(point_right +j)); i++){
+                cout<<"H";
             }
             cout<<"||";
-            for(int i=0; i < *(point_right +j); i++){
-                cout<<"*";
+            for(int i=0; i < 2*(*(point_right +j)); i++){
+                cout<<"H";
             }
-            for(int i=0; i < n - *(point_right +j); i++){
+            for(int i=0; i < 2*n - 2*(*(point_right +j)); i++){
                 cout<<" ";
             }
             cout<<endl;
+            
     }
-    for(int i=0; i<(6 *n+6); i++){
+    for(int i=0; i<((12 * n)+6); i++){
         cout<<"=";
     }
 }
