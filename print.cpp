@@ -49,51 +49,7 @@ void print(int *point_left, int *point_mid, int *point_right, int n){
                 cout<<" ";
             }
             cout<<endl;
-            ////////////////////////////////////////////
-            for(int i=0; i < 2*n - 2*(*(point_left +j)); i++){
-                cout<<" ";
-            }
-            for(int i=0; i < 2*(*(point_left +j)); i++){
-                cout<<"H";
-            }
-            cout<<"||";
-            for(int i=0; i < 2*(*(point_left +j)); i++){
-                cout<<"H";
-            }
-            for(int i=0; i < 2*n - 2*(*(point_left +j)); i++){
-                cout<<" ";
-            }
-            //left layer printed
-            for(int i=0; i < 2*n - 2*(*(point_mid +j)); i++){
-                cout<<" ";
-            }
-            for(int i=0; i < 2*(*(point_mid +j)); i++){
-                cout<<"H";
-            }
             
-            cout<<"||";
-            
-            for(int i=0; i < 2*(*(point_mid +j)); i++){
-                cout<<"H";
-            }
-            for(int i=0; i < 2*n - 2*(*(point_mid +j)); i++){
-                cout<<" ";
-            }
-            //middle layer printed
-            for(int i=0; i < 2*n - 2*(*(point_right +j)); i++){
-                cout<<" ";
-            }
-            for(int i=0; i < 2*(*(point_right +j)); i++){
-                cout<<"H";
-            }
-            cout<<"||";
-            for(int i=0; i < 2*(*(point_right +j)); i++){
-                cout<<"H";
-            }
-            for(int i=0; i < 2*n - 2*(*(point_right +j)); i++){
-                cout<<" ";
-            }
-            cout<<endl;
             
     }
     for(int i=0; i<((12 * n)+6); i++){
