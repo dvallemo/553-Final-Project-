@@ -6,6 +6,57 @@ private:
 
 
 public:
+    void user_input_moves(){
+    char starting_peg, ending_peg;
+    
+    while(true){
+        wrong_start://move to here if invalid input for start peg
+        cout<<"What peg is the ring you want to move on?"<<endl;
+        cout<< "Enter 1 for left peg, 2 for middle peg, or 3 for right peg: ";
+        cin>>starting_peg;
+        if (starting_peg != '1' && starting_peg != '2' && starting_peg != '3'){ //check if start peg input is valid
+            cout<<endl<<"I'm sorry, your input is invalid. Please try again"<<endl;
+            goto wrong_start;
+        }
+        wrong_end://move to here if invalid input for end peg
+        cout<<"What peg would you like to move your ring to?"<<endl;
+        cout<< "Enter 1 for left peg, 2 for middle peg, or 3 for right peg: ";
+        cin>>ending_peg;
+        if (ending_peg != '1' && ending_peg != '2' && ending_peg != '3'){ //check if end peg input is valid
+            cout<<endl<<"I'm sorry, your input is invalid. Please try again"<<endl;
+            goto wrong_end;
+        }
+        if (starting_peg == ending_peg){ //check if start and end are equal
+            cout<<"It appears that you moved the ring to it's starting peg."<<endl;
+            cout<<"Please try again."<<endl;
+            goto wrong_start;
+        }
+        // start moving ring
+        if(starting_peg == '1' && ending_peg == '2'){ // left to mid
+            left_to_mid(point_left, point_mid, n);
+        }
+        else if(starting_peg == '1' && ending_peg == '3'){ // left to right
+            left_to_right(point_left, point_right, n);
+        }
+        else if(starting_peg == '2' && ending_peg == '1'){  // mid to left
+            mid_to_left(point_mid, point_left, n);
+        }
+        else if(starting_peg == '2' && ending_peg == '3'){  // mid to right
+            mid_to_right(point_mid, point_right, n); 
+        }
+        else if(starting_peg == '3' && ending_peg == '1'){ // right to left
+            right_to_left(point_right, point_left, n);
+        }
+        else if(starting_peg == '3' && ending_peg == '2'){ // right to mid
+            right_to_mid(point_right, point_mid, n);
+        }
+        if(check_win){ // check if last move caused the player to win, if so break out of while loop
+            cout<<"Congradulations, you compleated the puzzle!"<<endl;
+            break;
+        }
+    }
+    
+        
     int efficient(int n){
         if (n == 1){
             return 1;
