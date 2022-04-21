@@ -302,7 +302,14 @@ public:
         cout <<endl;
     }
 
-
+    bool check_win(int *point_right, int n){
+        for (int i=0; i<n; i++){
+            if (*(point_right + i) != i + 1){ //if the ring does not match where it should in height return false
+                return false;
+            }
+        }
+        return true; //all of the ring's places have been checked and are in the right places
+    }
 
 
 };
