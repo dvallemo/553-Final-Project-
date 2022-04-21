@@ -136,7 +136,8 @@ public:
             } else if (starting_peg == '3' && ending_peg == '2') { // right to mid
                 right_to_mid(point_right, point_mid, n);
             }
-            if (check_win) { // check if last move caused the player to win, if so break out of while loop
+
+            if (check_win(point_right, n)) { // check if last move caused the player to win, if so break out of while loop
                 cout << "Congradulations, you compleated the puzzle!" << endl;
                 break;
             }
@@ -193,6 +194,7 @@ public:
             /******************************* Add to move counter *******************/
             moves++;
             cout << moves << endl;
+            print(point_left, point_mid, point_right, n);
         }
         else{ // if ring being moved would be put on smaller ring
             cout<<"I'm sorry but you can't put a large ring on a small ring!"<<endl;
@@ -232,6 +234,7 @@ public:
             /******************************* Add to move counter *******************/
             moves++;
             cout << moves << endl;
+            print(point_left, point_mid, point_right, n);
         }
         else{ // if ring being moved would be put on smaller ring
             cout<<"I'm sorry but you can't put a large ring on a small ring!"<<endl;
@@ -271,6 +274,7 @@ public:
             /******************************* Add to move counter *******************/
             moves++;
             cout << moves << endl;
+            print(point_left, point_mid, point_right, n);
         }
         else{ // if ring being moved would be put on smaller ring
             cout<<"I'm sorry but you can't put a large ring on a small ring!"<<endl;
@@ -310,6 +314,7 @@ public:
             /******************************* Add to move counter *******************/
             moves++;
             cout << moves << endl;
+            print(point_left, point_mid, point_right, n);
         }
         else{ // if ring being moved would be put on smaller ring
             cout<<"I'm sorry but you can't put a large ring on a small ring!"<<endl;
@@ -349,6 +354,7 @@ public:
             /******************************* Add to move counter *******************/
             moves++;
             cout << moves << endl;
+            print(point_left, point_mid, point_right, n);
         }
         else{ // if ring being moved would be put on smaller ring
             cout<<"I'm sorry but you can't put a large ring on a small ring!"<<endl;
@@ -388,6 +394,7 @@ public:
             /******************************* Add to move counter *******************/
             moves++;
             cout << moves << endl;
+            print(point_left, point_mid, point_right, n);
         }
         else{ // if ring being moved would be put on smaller ring
             cout<<"I'm sorry but you can't put a large ring on a small ring!"<<endl;
