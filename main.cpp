@@ -1,10 +1,14 @@
 #include <iostream>
 using namespace std;
 
+
+int Last_moves_used = 0;
+int Last_rings_chosen = 0;
+
 class Towers{
 private:
 
-    int moves;
+    int moves=0;
 
     int *point_left;
     int *point_mid ;
@@ -13,7 +17,7 @@ private:
 public:
     int n;
     Towers(){
-        moves =0;
+    moves = 0;
     }
     Towers(int N){
         n = N;
@@ -93,6 +97,7 @@ public:
                 return false;
             }
         }
+        Last_rings_chosen = n;
         return true; //all of the ring's places have been checked and are in the right places
     }
 
@@ -105,10 +110,11 @@ public:
             cout << "What peg is the ring you want to move on?" << endl;
             cout << "Enter 1 for left peg, 2 for middle peg, or 3 for right peg: ";
             cin >> starting_peg;
-            if (starting_peg != '1' && starting_peg != '2' && starting_peg != '3') { //check if start peg input is valid
+            if(starting_peg != '1' && starting_peg != '2' && starting_peg != '3') { //check if start peg input is valid
                 cout << endl << "I'm sorry, your input is invalid. Please try again" << endl;
                 goto wrong_start;
             }
+           
             wrong_end://move to here if invalid input for end peg
             cout << "What peg would you like to move your ring to?" << endl;
             cout << "Enter 1 for left peg, 2 for middle peg, or 3 for right peg: ";
@@ -166,9 +172,9 @@ public:
     void left_to_mid(int *point_left, int *point_mid, int n){
         int start = 0;
         int end = 0;
-        int s_ring = 0;
-        int b_ring = 0;
-        for(int i=0; i<n; i++){
+        int s_ring = 0; //presumably small ring
+        int b_ring = 0; //presumably big ring
+        for(int i=0; i<n; i++){   //look for index of top ring available
             if (*(point_left + i) != 0){
                 start = i;
                 s_ring = *(point_left + i);
@@ -180,7 +186,7 @@ public:
             cout<< "Please try again, don't worry you wont be infracted for extra moves."<<endl;
             goto wrong;
         }
-        for(int i=0; i<n; i++){
+        for(int i=0; i<n; i++){   //look for top large ring available
             b_ring = *(point_mid + i);
             if (*(point_mid + i) != 0){
                 break;
@@ -193,7 +199,7 @@ public:
             *(point_left + start) = 0;
             /******************************* Add to move counter *******************/
             moves++;
-            cout << moves << endl;
+            cout << "# of moves: "<<moves << endl;
             print(point_left, point_mid, point_right, n);
         }
         else{ // if ring being moved would be put on smaller ring
@@ -201,7 +207,7 @@ public:
             cout<< "Please try again, don't worry you wont be infracted for extra moves."<<endl;
         }
         wrong:
-        s_ring=0; //arbitrary code to make goto statment work
+        s_ring=s_ring; //arbitrary code to make goto statment work
     }//end left to middle function
     void left_to_right(int *point_left, int *point_right, int n){
         int start = 0;
@@ -233,7 +239,7 @@ public:
             *(point_left + start) = 0;
             /******************************* Add to move counter *******************/
             moves++;
-            cout << moves << endl;
+            cout <<"# of moves: "<< moves << endl;
             print(point_left, point_mid, point_right, n);
         }
         else{ // if ring being moved would be put on smaller ring
@@ -273,7 +279,7 @@ public:
             *(point_mid + start) = 0;
             /******************************* Add to move counter *******************/
             moves++;
-            cout << moves << endl;
+            cout <<"# of moves: "<< moves << endl;
             print(point_left, point_mid, point_right, n);
         }
         else{ // if ring being moved would be put on smaller ring
@@ -313,7 +319,7 @@ public:
             *(point_mid + start) = 0;
             /******************************* Add to move counter *******************/
             moves++;
-            cout << moves << endl;
+            cout << "# of moves: "<<moves << endl;
             print(point_left, point_mid, point_right, n);
         }
         else{ // if ring being moved would be put on smaller ring
@@ -353,7 +359,7 @@ public:
             *(point_right + start) = 0;
             /******************************* Add to move counter *******************/
             moves++;
-            cout << moves << endl;
+            cout <<"# of moves: "<< moves << endl;
             print(point_left, point_mid, point_right, n);
         }
         else{ // if ring being moved would be put on smaller ring
@@ -393,7 +399,7 @@ public:
             *(point_right + start) = 0;
             /******************************* Add to move counter *******************/
             moves++;
-            cout << moves << endl;
+            cout << "# of moves: "<<moves << endl;
             print(point_left, point_mid, point_right, n);
         }
         else{ // if ring being moved would be put on smaller ring
@@ -404,11 +410,20 @@ public:
         s_ring=0; //arbitrary code to make goto statment work
     }//end right to middle
 
+    float efficiency_percent(){
+        float tot;
+        tot = (float(efficient(Last_rings_chosen)) / float(Last_moves_used))*100;
+        return tot;
+    }
+    
+
 
     ~Towers(){
         delete[] point_left;
         delete[] point_mid;
         delete[] point_right;
+        Last_moves_used = moves;
+        moves = 0;
     }
 
 
@@ -442,12 +457,12 @@ int main() {
                 Towers T(n);
 
                 T.user_input_moves();
+                
                /* int *point_left = new int[n];
                 int *point_mid = new int[n];
                 int *point_right = new int[n];
                 for (int i = 0; i < n; i++) {
                     *(point_left + i) = i + 1;
-
                 }
                 for (int i = 0; i < n; i++) {
                     *(point_mid + i) = 0;
@@ -459,37 +474,21 @@ int main() {
 
 
                 /*tower.print(point_left, point_mid, point_right, n);
-
                 tower.left_to_mid(point_left, point_mid, n);          //L to  M
-
                 tower.print(point_left, point_mid, point_right, n);
-
                 tower.left_to_right(point_left, point_right, n);        //L to R
-
                 tower.print(point_left, point_mid, point_right, n);
-
                 tower.mid_to_right(point_mid, point_right, n);         //M to R
-
                 tower.print(point_left, point_mid, point_right, n);
-
                 tower.left_to_mid(point_left, point_mid, n);           //L to M
-
                 tower.print(point_left, point_mid, point_right, n);
-
                 tower.right_to_left(point_right, point_left, n);         //R to L
-
                 tower.print(point_left, point_mid, point_right, n);
-
                 tower.right_to_mid(point_right, point_mid, n);          //R to M
-
                 tower.print(point_left, point_mid, point_right, n);
-
                 tower.left_to_mid(point_left, point_mid, n);         //L to M
-
                 tower.print(point_left, point_mid, point_right, n);
-
                 tower.mid_to_left(point_mid, point_left, n);            //M to L
-
                 tower.print(point_left, point_mid, point_right, n);*/
 
 
@@ -519,7 +518,15 @@ int main() {
                             break;
                         }
                         case 2: {
-                            cout << "Percent Efficiency" << endl;
+                            if(Last_moves_used == 0){ //player has not plyed yet
+                                cout<<"I'm sorry but you will have to play this game first in order to unlock this statistic."<<endl;
+                                cout<<"Please enjoy the game!"<<endl; 
+                            }
+                            else{ //player has played
+                                cout<<"Last game you chose to play with "<<Last_rings_chosen<<" rings and used "<<Last_moves_used<<" moves to complete the puzzle."<<endl;
+                                cout<<"The most efficient number of moves was "<<tower.efficient(n)<<", therefore your percent efficiency was "<<tower.efficiency_percent()<<"%"<<endl;
+                            }
+                            
                             break;
                         }
                         case 3: {
